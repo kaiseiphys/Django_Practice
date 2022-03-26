@@ -15,9 +15,18 @@
     # 準備
         1. Django をインストール
             pip install django
-        2. Django プロジェクトを作成
+        2. Django プロジェクト [leaning_log] を作成
             django-admin startproject learning_log .
         3. データベースを作成
             python3 manage.py migrate
         4. 開発サーバを起動
             python3 manage.py runserver
+
+    # アプリケーションを開始
+        1. アプリケーション [learning_logs] を開始
+            python3 manage.py startapp learning_logs
+        2. モデルを定義
+            learning_logs/models.py を編集
+        3. モデルを有効化
+            learning_log/models.py を編集
+
