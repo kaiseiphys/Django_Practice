@@ -13,11 +13,11 @@
 
 # 手順
     # 準備
-    1. Django をインストール
-        pip install django
-    2. Django プロジェクトを作成
-        django-admin startproject learning_log
-    3. データベースを作成
-        python3 manage.py migrate
-    4. 開発サーバを起動
-        python3 manage.py runserver
+        1. Django をインストール
+            pip install django
+        2. Django プロジェクトを作成
+            django-admin startproject learning_log
+        3. データベースを作成
+            python3 manage.py migrate
+        4. 開発サーバを起動
+            python3 manage.py runserver
