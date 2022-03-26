@@ -26,7 +26,10 @@
         1. アプリケーション [learning_logs] を開始
             python3 manage.py startapp learning_logs
         2. モデルを定義
-            learning_logs/models.py を編集
+            learning_logs/models.py で TOPIC というクラスを作成
+            TOPICクラスには 'text', 'date_added' の2つの属性を追加
         3. モデルを有効化
-            learning_log/models.py を編集
-
+            learning_log/settings.py の INSTALLED APPS に learning_logs を追加
+        4. 以下を実行し、マイグレーションしてデータベースに TOPIC 用のテーブルを作成する
+            python3 manage.py makemigrations learning_logs
+            python3 manage.py migrate
