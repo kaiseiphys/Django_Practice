@@ -27,9 +27,39 @@
             python3 manage.py startapp learning_logs
         2. モデルを定義
             learning_logs/models.py で TOPIC というクラスを作成
-            TOPICクラスには 'text', 'date_added' の2つの属性を追加
+            Topic クラスには 'text', 'date_added' の2つの属性を追加
         3. モデルを有効化
             learning_log/settings.py の INSTALLED APPS に learning_logs を追加
         4. 以下を実行し、マイグレーションしてデータベースに TOPIC 用のテーブルを作成する
             python3 manage.py makemigrations learning_logs
             python3 manage.py migrate
+
+    # 管理サイトを利用する
+        1. スーパーユーザーを設定
+            python3 manage.py createsuperuser
+        2. Topic モデルを管理サイトに登録
+            admin.py に admin.site.register(Topic) を追加し、Topic モデルをインポートして管理サイトで使えるようにする
+
+    # Entry モデルを定義する
+        1. learning_logs/models.py で TOPIC というクラスを作成
+            Entry クラスには 'topic', 'text', 'date_added' の3つの属性を追加
+            __str__() メソッドで個々の記事を参照したときに表示する情報を指定
+        2. 作成したモデルをマイグレーション
+            python3 manage.py makemigrations learning_logs
+            python3 manage.py migrate
+        3. Entry モデルを管理サイトに登録
+            admin.py に admin.site.register(Entry) を追加
+    
+    # ページを作成する
+        1. learning_log/urls.py を編集
+            path('', include('learning_logs.urls')), を追加し、learning_logs の urls モジュールを取り込む
+            learning_logs/urls.py はまだないので、
+        2. learning_logs/urls.py を新規作成して、
+            urlpatterns = [path('', views.index, name='index'),] を追加し、views モジュールの index 関数を呼び出す
+            index() 関数はまだ定義していないので、
+        3. learning_logs/views.py で index() 関数を定義
+            learning_logs/index.html を render (描写) するように定義した
+            index.html はまだないので、
+        4. テンプレートを作成する
+            learning_logs フォルダーの下に templates フォルダーを作り、更にその下に learning_logs フォルダーを作る
+            learning_logs/templates/learning_logs/index.html を作る。

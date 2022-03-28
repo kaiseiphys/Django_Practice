@@ -8,3 +8,16 @@ class Topic(models.Model):
     def __str__(self):
         """モデルの文字表現を返す"""
         return self.text
+
+class Entry(models.Model):
+    """トピックに関して具体的に学んだこと"""
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name_plural = 'entries'
+        
+    def __str__(self):
+        """モデルの文字表現を返す"""
+        return f"{self.text[:25]}..."
